@@ -158,7 +158,7 @@ export class Database {
     async set(index, newObject, write = true) {
         if (!this.fd || !this.entries || !this.schema)
             throw new Error("set before init");
-        this._objects[index] = Object.assign(this._objects[index], newObject);
+        this._objects[index] = Object.assign(this._objects[index] || {}, newObject);
         if (!write)
             return;
         const buffer = Buffer.alloc(this.schemaSize);
