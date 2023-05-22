@@ -166,8 +166,6 @@ export class Database {
         this.entries.forEach(([k, v]) => {
             if (newObject[k] !== undefined)
                 writer.write(newObject[k], v);
-            else
-                throw new Error(`Key ${k} not in object`);
         });
         await this.fd.write(buffer, 0, this.schemaSize, this.schemaSize * index);
     }
