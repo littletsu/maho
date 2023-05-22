@@ -1,8 +1,9 @@
 {
+  "name": "maho",
+  "main": "./js/maho.js",
   "devDependencies": {
     "@types/node": "^20.1.4",
     "typescript": "^5.0.4"
   },
-  "type": "module",
-  "main": "./js/maho.js"
+  "type": "module"
 }
