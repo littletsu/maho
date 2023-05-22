@@ -35,9 +35,15 @@ class BufferReader {
         return read;
     }
     readString(size) {
-        const read = this.buffer.subarray(this.i, this.i + size).toString();
+        let str = [];
+        for (let i = this.i; i < this.i + size; i++) {
+            const char = this.buffer[i];
+            if (char === 0)
+                break;
+            str.push(char);
+        }
         this.i += size;
-        return read;
+        return String.fromCharCode(...str);
     }
     read(schemaValue) {
         const type = schemaValue.type;
