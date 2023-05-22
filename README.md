@@ -58,7 +58,7 @@ await db.push({
 
 // Getting data from the database
 
-// Objects can only be get by the index they were pushed by
+// Objects can only be retrieved by the index they were pushed by
 
 db.get(0); /*
 {
