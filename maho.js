@@ -131,7 +131,7 @@ export class Database {
         this._objects = [];
         this.schemaSize = 0;
     }
-    async init(path = './db.db', schema) {
+    async init(path = './db.maho', schema) {
         this.schema = schema;
         try {
             this.fd = await fs.open(path, "r+", 0o666);

@@ -166,7 +166,7 @@ export class Database {
     private fd?: FileHandle;
 
 
-    public async init(path='./db.db', schema: Schema) {
+    public async init(path='./db.maho', schema: Schema) {
         this.schema = schema;
         
         try {

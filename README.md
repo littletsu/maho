@@ -32,7 +32,7 @@ const userSchema: Schema = {
 const db = new Database();
 
 // Initializing database path and schema
-await db.init("./database.db", userSchema);
+await db.init("./database.maho", userSchema);
 
 // Push data to it
 
