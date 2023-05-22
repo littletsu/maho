@@ -158,14 +158,16 @@ export class Database {
     async set(index, newObject, write = true) {
         if (!this.fd || !this.entries || !this.schema)
             throw new Error("set before init");
-        this._objects[index] = newObject;
+        this._objects[index] = Object.assign(this._objects[index], newObject);
         if (!write)
             return;
         const buffer = Buffer.alloc(this.schemaSize);
         const writer = new BufferWriter(buffer);
         this.entries.forEach(([k, v]) => {
-            if (newObject[k] !== undefined)
-                writer.write(newObject[k], v);
+            if (this._objects[index][k] !== undefined)
+                writer.write(this._objects[index][k], v);
+            else
+                throw new Error(`Key ${k} not in object`);
         });
         await this.fd.write(buffer, 0, this.schemaSize, this.schemaSize * index);
     }
